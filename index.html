@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quaid Khan | Portfolio</title>
+
+  <style>
+    :root{
+      --bg:#070b16;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.10);
+      --text:#eaf0ff;
+      --muted:#a8b3d6;
+      --glow: rgba(88,165,255,.55);
+      --glow2: rgba(140,82,255,.45);
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(88,165,255,.18), transparent 55%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(140,82,255,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    /* ====== TOP NAV (pill / glass) ====== */
+    .nav-wrap{
+      position:fixed;
+      top:18px; left:0; right:0;
+      z-index:9999;
+      display:flex;
+      justify-content:center;
+      padding:0 14px;
+      pointer-events:none;
+    }
+    nav{
+      pointer-events:auto;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:10px 14px;
+      border:1px solid var(--stroke);
+      background: rgba(10,14,28,.55);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.45);
+      max-width: min(var(--max), 100%);
+      width: fit-content;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, rgba(88,165,255,1), rgba(140,82,255,1));
+      box-shadow: 0 0 22px rgba(88,165,255,.6);
+    }
+    .links{display:flex; gap:8px; flex-wrap:wrap}
+    .links a{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      opacity:.92;
+      transition:.2s;
+    }
+    .links a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+      transform: translateY(-1px);
+      opacity:1;
+    }
+
+    /* ====== HERO with 3D grid/tunnel feel ====== */
+    .hero{
+      min-height: 100vh;
+      display:grid;
+      place-items:center;
+      padding: 110px 16px 70px;
+      position:relative;
+      isolation:isolate;
+    }
+
+    /* Animated grid background */
+    .grid-tunnel{
+      position:absolute; inset:-20vh -20vw;
+      z-index:-1;
+      transform: perspective(900px) rotateX(64deg);
+      transform-origin: center top;
+      opacity:.55;
+    }
+    .grid-tunnel::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(to right, rgba(120,170,255,.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(120,170,255,.18) 1px, transparent 1px);
+      background-size: 80px 80px;
+      filter: drop-shadow(0 0 18px rgba(88,165,255,.30));
+      animation: gridMove 2.4s linear infinite;
+      mask-image: radial-gradient(circle at 50% 20%, rgba(0,0,0,.95), transparent 70%);
+    }
+    @keyframes gridMove{
+      from{ background-position: 0 0, 0 0; }
+      to{ background-position: 0 80px, 0 80px; }
+    }
+
+    /* glow orbs */
+    .orb{
+      position:absolute;
+      width: 520px; height: 520px;
+      border-radius:50%;
+      filter: blur(30px);
+      opacity:.26;
+      z-index:-1;
+    }
+    .orb.one{ background: rgba(88,165,255,.7); left:-180px; top:20vh; }
+    .orb.two{ background: rgba(140,82,255,.7); right:-220px; top:10vh; }
+
+    .container{max-width: var(--max); width:100%; margin:0 auto;}
+    .hero-card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 240px at 20% 0%, rgba(88,165,255,.22), transparent 50%),
+                  radial-gradient(420px 220px at 80% 10%, rgba(140,82,255,.18), transparent 55%);
+      z-index:-1;
+    }
+  
+
+
+
+.hero-content{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+
+.avatar-wrap{
+  position:relative;
+  width:200px;        /* controls width */
+  flex: 0 0 200px;
+}
+
+.avatar-wrap::before{
+  content:"";
+  position:absolute;
+  inset: 14px -10px -10px 14px;
+  background: linear-gradient(135deg, rgba(88,165,255,.55), rgba(140,82,255,.55));
+  border-radius: 24px;
+  filter: blur(34px);
+  opacity: .75;
+  z-index: 0;
+}
+
+.about-image{
+  position:relative;
+  flex: 0 0 220px;
+}
+
+.about-image::before{
+  content:"";
+  position:absolute;
+  inset: 18px -12px -12px 18px;
+  background: linear-gradient(135deg, rgba(88,165,255,.45), rgba(140,82,255,.45));
+  border-radius:22px;
+  filter: blur(30px);
+  opacity:.75;
+  z-index:0;
+}
+
+.about-pic{
+  position:relative;
+  z-index:1;
+}
+.about-title{
+  font-size:18px;
+  margin:0 0 10px;
+}
+.about-line{
+  height:2px;
+  width:90px;
+  background: linear-gradient(90deg, rgba(88,165,255,1), rgba(140,82,255,1));
+  border-radius:999px;
+  margin-bottom:14px;
+}
+
+.about-text{
+  flex:1;
+  min-width:300px;
+}
+.about-card{
+  max-width:1100px;
+  margin:0 auto;
+  padding:22px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+}
+
+.avatar{
+  width:100%;
+  height:260px;       /* controls height */
+  border-radius:20px;
+  object-fit:cover;
+  object-position: top center;
+  position:relative;
+  z-index:1;
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow: 0 25px 60px rgba(0,0,0,.6);
+  transform: translateZ(0);
+}
+
+.hero-text{ flex: 1 1 320px; }
+
+    .kicker{
+      color: var(--muted);
+      font-weight:700;
+      letter-spacing:.2px;
+      font-size: 14px;
+    }
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(28px, 4.5vw, 46px);
+      line-height:1.12;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 70ch;
+    }
+    .about-wrap{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+.about-pic{
+  width:140px;
+  height:180px;
+  border-radius:16px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.18);
+}
+
+.about-list{
+  margin:14px 0 0;
+  padding-left:18px;
+  color: var(--muted);
+}
+.about-list b{ color: var(--text); }
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      text-decoration:none;
+      color:var(--text);
+      font-weight:800;
+      font-size:14px;
+      background: rgba(255,255,255,.05);
+      transition:.2s;
+    }
+    .btn:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.18); }
+   .btn.primary{
+  position: relative;
+  overflow: hidden;
+  border: none;
+  color: white;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0ea5ff, #2563eb);
+  box-shadow:
+    0 0 20px rgba(14,165,255,.7),
+    0 0 40px rgba(37,99,235,.5);
+  transition: 0.3s ease;
+}
+
+/* hover glow boost */
+.btn.primary:hover{
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 0 30px rgba(14,165,255,.9),
+    0 0 60px rgba(37,99,235,.6);
+}
+
+/* animated shine effect */
+.btn.primary::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+  transition:0.6s;
+}
+
+.btn.primary:hover::before{
+  left:100%;
+}
+    /* ====== SECTIONS ====== */
+    section{ padding: 62px 16px; }
+    .section-title{
+      max-width: var(--max);
+      margin: 0 auto 16px;
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:.2px;
+    }
+    .section-title p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid{
+      max-width: var(--max);
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 10px 45px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      transition:.2s;
+    }
+    .card:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.16); }
+    .card h3{ margin:0 0 10px; font-size: 16px; }
+    .card p{ margin:0; color: var(--muted); font-size: 14px; }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+ .chip{
+  font-size: 12px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,240,255,.95);
+}
+    /* About */
+    .about-card{ grid-column: span 12; }
+    .about-card p{ font-size: 15px; }
+
+    /* Skills layout */
+    .skill-card{ grid-column: span 6; }
+    .skill-card .chips{ margin-top:10px; }
+
+    /* Projects */
+    .project-card{ grid-column: span 6; }
+    .project-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    .small{
+      font-size: 13px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-weight:800;
+    }
+
+    /* Contact */
+    .contact-card{ grid-column: span 12; display:grid; gap:10px; }
+    .contact-row{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+    }
+    .contact-row a{ word-break: break-all; }
+
+    footer{
+      padding: 32px 16px 40px;
+      color: var(--muted);
+      text-align:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+      nav{ gap:10px; }
+      .links a{ padding:8px 10px; }
+    }
+
+    .hero-top{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(255,255,255,.2);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+  </style>
+</head>
+
+<body>
+
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav>
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Quaid Khan</span>
+      </div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- HERO -->
+
+
+  <header class="hero" id="top">
+    <div class="grid-tunnel" aria-hidden="true"></div>
+    <div class="orb one" aria-hidden="true"></div>
+    <div class="orb two" aria-hidden="true"></div>
+
+   <div class="container">
+  <div class="hero-card">
+
+    <div class="hero-content">
+      <div class="avatar-wrap">
+        <img src="quaid.jpg" alt="Quaid Khan profile photo" class="avatar">
+      </div>
+
+      <div class="hero-text">
+        <div class="kicker">COMSATS University Abbottabad • Software Engineering (4th Semester)</div>
+        <h1>Quaid Khan</h1>
+        <p class="sub">
+          Flutter Developer • Web Developer • Firebase • REST APIs<br/>
+          I build cross-platform mobile apps and responsive websites with clean UI.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/quaid-khan-005554341" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+ 
+
+  <div class="about-flex">
+
+    <div class="about-image">
+      <img src="quaid.jpg" alt="Quaid Khan" class="about-pic">
+    </div>
+
+    <div class="about-text">
+        <h3 class="about-title">Who I am</h3>
+<div class="about-line"></div>
+      <p>
+        I’m <b>Quaid Khan</b>, a <b>Software Engineering student (4th semester)</b> 
+        at <b>COMSATS University Islamabad, Abbottabad Campus</b>. 
+      </p>
+
+      <p>
+        My main focus is building real projects using <b>Flutter</b> and 
+        <b>Web Development</b>. I enjoy clean UI, Firebase integration, 
+        and working with REST APIs. I’m currently open to 
+        <b>internship</b> and <b>freelance</b> opportunities.
+      </p>
+      <ul class="about-list">
+  <li><b>University:</b> COMSATS Abbottabad</li>
+  <li><b>Focus:</b> Flutter + Web + Firebase</li>
+  <li><b>Looking for:</b> Internship / Freelance</li>
+</ul>
+
+      <div class="chips">
+        <span class="chip">Pakistan</span>
+        <span class="chip">Open to Internship</span>
+        <span class="chip">Freelance</span>
+        <span class="chip">Remote</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-title">
+      <h2>Skills</h2>
+      <p>What I use to build</p>
+    </div>
+
+    <div class="grid">
+      <div class="card skill-card">
+        <h3>Mobile Development</h3>
+        <p>Cross-platform apps with clean architecture and smooth UI.</p>
+        <div class="chips">
+          <span class="chip">Flutter</span>
+          <span class="chip">Dart</span>
+          <span class="chip">State Management</span>
+          <span class="chip">UI/UX</span>
+        </div>
+      </div>
+
+      <div class="card skill-card">
+        <h3>Backend / Services</h3>
+        <p>Authentication, database, and real-time features.</p>
+        <div class="chips">
+          <span class="chip">Firebase Auth</span>
+          <span class="chip">Firestore</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Postman</span>
+        </div>
+      </div>
+
+      <div class="card skill-card">
+        <h3>Web Development</h3>
+        <p>Responsive layouts that work on mobile and desktop.</p>
+        <div class="chips">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Responsive Design</span>
+        </div>
+      </div>
+
+      <div class="card skill-card">
+        <h3>Tools</h3>
+        <p>Daily tools for building and shipping projects.</p>
+        <div class="chips">
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">VS Code</span>
+          <span class="chip">Figma (basic)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-title">
+      <h2>Projects</h2>
+      <p>Add links to GitHub / live demo</p>
+    </div>
+
+    <div class="grid">
+      <div class="card project-card">
+        <h3>Flutter Task Manager</h3>
+        <p>Tasks with Firebase Auth + Firestore CRUD + clean UI.</p>
+        <div class="chips">
+          <span class="chip">Flutter</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">CRUD</span>
+        </div>
+        <div class="project-actions">
+          <a class="btn small primary" href="#" target="_blank" rel="noopener">Live Demo</a>
+          <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <h3>Portfolio Website</h3>
+        <p>Responsive portfolio with glass UI + animated grid background.</p>
+        <div class="chips">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JS</span>
+        </div>
+        <div class="project-actions">
+          <a class="btn small primary" href="#" target="_blank" rel="noopener">Live Demo</a>
+          <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="services">
+  <div class="section-title">
+    <h2>Services</h2>
+    <p>What I can build for you</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Mobile App Development</h3>
+      <p>Cross-platform Flutter apps with Firebase integration.</p>
+    </div>
+
+    <div class="card">
+      <h3>Website Development</h3>
+      <p>Responsive and modern websites using HTML, CSS & JS.</p>
+    </div>
+
+    <div class="card">
+      <h3>Backend Integration</h3>
+      <p>Authentication, REST APIs, and database management.</p>
+    </div>
+
+  </div>
+</section>
+
+  <section id="contact">
+  <div class="section-title">
+    <h2>Contact</h2>
+    <p>Let’s build something together</p>
+  </div>
+
+  <div class="grid">
+    <div class="card contact-card">
+
+      <div class="contact-row">
+        <div>
+          <h3 style="margin:0 0 6px;">Available For</h3>
+          <p style="margin:0; color:var(--muted);">
+            Internship • Freelance • Remote Opportunities
+          </p>
+        </div>
+
+        <div class="cta" style="margin:0;">
+          <a class="btn primary" href="mailto:q.khan0q@gmail.com">
+            Email Me
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;">
+        <p style="color:var(--muted); margin-bottom:8px;">📧 Email:</p>
+        <a class="btn" href="mailto:q.khan0q@gmail.com">
+          q.khan0q@gmail.com
+        </a>
+
+        <div style="margin-top:15px;">
+          <p style="color:var(--muted); margin-bottom:8px;">📱 Phone:</p>
+
+          <a class="btn" href="tel:+923411970990">
+            03411970990
+          </a>
+
+          <a class="btn" style="margin-left:8px;" href="tel:+923709120096">
+            03709120096
+          </a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div style="margin-top:20px;">
+          <p style="color:var(--muted); margin-bottom:8px;">💬 WhatsApp:</p>
+          <a class="btn primary"
+             href="https://wa.me/923709120096"
+             target="_blank">
+             Message on WhatsApp
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div style="margin-top:25px;">
+          <p style="color:var(--muted); margin-bottom:8px;">🌐 Connect with me:</p>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn"
+               href="https://www.linkedin.com/in/quaid-khan-005554341"
+               target="_blank">LinkedIn</a>
+
+            <a class="btn"
+               href="https://github.com/Quaid-khan"
+               target="_blank">GitHub</a>
+
+            <a class="btn"
+               href="https://www.instagram.com/qk.xman"
+               target="_blank">Instagram</a>
+
+            <a class="btn"
+               href="https://www.facebook.com/share/1AVVqc4MM7/"
+               target="_blank">Facebook</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+  <footer>
+    © <span id="year"></span> Quaid Khan • Built with HTML/CSS/JS
+  </footer>
+
+  <script>
+    // footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // small effect: highlight active section link
+    const links = [...document.querySelectorAll(".links a")];
+    const sections = links
+      .map(a => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        links.forEach(l=>l.style.background="transparent");
+        const active = document.querySelector(`.links a[href="#${e.target.id}"]`);
+        if(active){
+          active.style.background = "rgba(255,255,255,.07)";
+          active.style.border = "1px solid rgba(255,255,255,.12)";
+        }
+      });
+    }, {threshold: 0.55});
+
+    sections.forEach(s=>obs.observe(s));
+  </script>
+
+</body>
+</html>
