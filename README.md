@@ -1,24 +1,59 @@
-Quaid Khan – Portfolio Website
+# Quaid Khan — Portfolio
 
-This is my personal portfolio website built using HTML and CSS. It showcases my skills, projects, and contact information.
+> A multi-page personal portfolio for **Quaid Khan**, presenting public work, practical skills, direct contact routes, and a visual portfolio CV.
 
-🚀 Technologies Used
+[**View the live portfolio**](https://quaidfolio-rnfjckkg.manus.space)
 
-HTML5
+## Preview
 
-CSS3
+### Home
 
-👨‍💻 About Me
+![Quaid Khan portfolio home page](docs/screenshots/home.png)
 
-I am a Software Engineering student skilled in Flutter and Web Development. I build cross-platform mobile applications and responsive web solutions.
+### Skills
 
-📌 Features
+![Quaid Khan portfolio skills page](docs/screenshots/skills.png)
 
-Responsive design
-Clean UI
-Project showcase section
-Contact section
+## What is included
 
-📷 Live Preview
-### 🌍 Live Website
-https://quaid-khan.github.io/portfolio/
+| Area | Details |
+|---|---|
+| **Multi-page experience** | Dedicated Home, Work, Skills, and Contact routes. |
+| **Public work** | Links to live products, source repositories, and case-study PDFs where available. |
+| **Skills** | A user-confirmed list of AI, development, IDE, and database tools. |
+| **Contact** | Direct GitHub, LinkedIn, Instagram, Facebook, email, phone, and WhatsApp routes. |
+| **Responsive design** | Mobile-ready layouts and navigation. |
+
+## Technology
+
+The portfolio uses **React 19**, **TypeScript**, **Vite**, **Tailwind CSS**, **Framer Motion**, and **Lucide icons**.
+
+## Run locally
+
+```bash
+pnpm install
+pnpm dev
+```
+
+To create a production build:
+
+```bash
+pnpm build
+```
+
+## Project structure
+
+```text
+client/src/pages/       # Home, Work, Skills, and Contact pages
+client/src/components/  # Shared layout and UI components
+client/src/index.css    # Portfolio visual system and responsive styles
+docs/screenshots/       # Authentic portfolio previews used in this README
+```
+
+## Deployment note
+
+The live portfolio is deployed on Manus. Visual assets are served through managed Manus storage URLs that are referenced directly in the source.
+
+## Contact
+
+Use the live portfolio’s Contact page to reach Quaid directly.
