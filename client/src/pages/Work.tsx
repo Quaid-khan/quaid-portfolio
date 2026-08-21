@@ -23,7 +23,7 @@ export default function Work() {
                 <div className="work-routes"><span className="work-routes-label">PROOF ROUTES</span>
                   {project.live && <a href={project.live} target="_blank" rel="noreferrer"><ExternalLink /> Live route</a>}
                   <a href={project.repo} target="_blank" rel="noreferrer"><Github /> Source archive</a>
-                  <a href={project.caseStudy} target="_blank" rel="noreferrer"><FileText /> Case study <FileDown /></a>
+                  {project.caseStudy && <a href={project.caseStudy} target="_blank" rel="noreferrer"><FileText /> Case study <FileDown /></a>}
                 </div>
               </div>
             </article>

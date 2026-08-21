@@ -13,6 +13,16 @@ export const contactLinks = {
 export const projects = [
   {
     number: "01",
+    name: "QK Research Studio",
+    type: "Evidence-first literature synthesis workspace",
+    description: "Maps research opportunities from a focused question, keeps a filterable source trail visible, and exports concise evidence notes for review.",
+    image: "/manus-storage/qk-research-studio-portfolio_06d3ed7a.png",
+    live: "https://qkresearch-aiynkviv.manus.space",
+    repo: "https://github.com/Quaid-khan/qk-research-studio",
+    tags: ["React", "tRPC", "OpenAlex", "arXiv"],
+  },
+  {
+    number: "02",
     name: "QK Researcher",
     type: "Evidence-first financial intelligence workspace",
     description: "Turns public-company disclosures into cited reports, visible research traces, and downloadable PDF artifacts.",
@@ -23,7 +33,7 @@ export const projects = [
     tags: ["React", "SEC EDGAR", "Gemini", "tRPC"],
   },
   {
-    number: "02",
+    number: "03",
     name: "Web Autopsy Network",
     type: "Evidence-backed web intelligence platform",
     description: "Separates observed signals, technical inferences, and citation-grounded interpretation across a web investigation workflow.",
@@ -33,7 +43,7 @@ export const projects = [
     tags: ["Next.js", "FastAPI", "Celery", "PostgreSQL"],
   },
   {
-    number: "03",
+    number: "04",
     name: "QK Social Agent",
     type: "Review-first social operations studio",
     description: "A controlled workspace for planning, rendering, approving, publishing, and learning from short-form video content.",
